@@ -1,4 +1,5 @@
-import { Box, Flex, IconButton, useDisclosure, Spacer } from "@chakra-ui/react";
+import { Box, Flex, IconButton, useDisclosure, Spacer, Button } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import CartIcon from "./CartIcon";
 import MenuItems from "./MenuItems";
@@ -9,10 +10,12 @@ const Navbar = () => {
   return (
     <Box bg="gray.900" px={4} color="white">
       <Flex h={16} alignItems="center" justifyContent="space-between">
-        <Box fontSize="xl" fontWeight="bold">KHENDY</Box>
+        <Box fontSize="xl" fontWeight="bold">
+          <Button as={Link} to="/">KHENDY</Button>
+        </Box>
 
         {/* MOBILE MENU */}
-        <IconButton
+        <IconButton 
           mx={2}
           size="md"
           icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}

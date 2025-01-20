@@ -1,6 +1,6 @@
 import { Menu, MenuButton, MenuList, MenuItem, Button, Stack } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { ChevronDownIcon } from "@chakra-ui/icons";
-import { px } from "framer-motion";
 
 const MenuItems = ({ isMobile = false }) => {
   return (
@@ -10,15 +10,16 @@ const MenuItems = ({ isMobile = false }) => {
           Productos
         </MenuButton>
         <MenuList bg={"gray.900"}>
-          <MenuItem bg={"gray.900"}>Brazaletes</MenuItem>
-          <MenuItem bg={"gray.900"}>Pulsera</MenuItem>
-          <MenuItem bg={"gray.900"}>Aros</MenuItem>
-          <MenuItem bg={"gray.900"}>Gargantillas</MenuItem>
+          <MenuItem as={Link} to="/products" bg={"gray.900"}>Brazaletes</MenuItem>
+          <MenuItem as={Link} to="/products" bg={"gray.900"}>Pulsera</MenuItem>
+          <MenuItem as={Link} to="/products" bg={"gray.900"}>Aros</MenuItem> 
+          <MenuItem as={Link} to="/products" bg={"gray.900"}>Gargantillas</MenuItem>
+          <MenuItem as={Link} to="/products" bg={"gray.900"}>Ver Todos</MenuItem>
         </MenuList>
       </Menu>
 
-      <Button variant="ghost" color="grey">Nosotros</Button>
-      <Button variant="ghost" color= "grey">Contacto</Button>
+      <Button as={Link} to="/aboutUs" variant="ghost" color="grey">Nosotros</Button>
+      <Button as={Link} to="/contact" variant="ghost" color= "grey">Contacto</Button>
     </Stack>
   );
 };
