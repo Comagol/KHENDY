@@ -20,7 +20,6 @@ const Carrousel = () => {
 
   return (
     <Box py="10">
-      {/* Swiper */}
       <Swiper
         modules={[Navigation, Pagination]}
         navigation={{
@@ -38,7 +37,7 @@ const Carrousel = () => {
         pagination={{ clickable: true }}
         loop={true}
         slidesPerView={1}
-        style={{ width: "50vw", height: "40vh" }} // Tamaño fijo para centrar
+        style={{ width: "50vw", height: "40vh" }}
       >
         {images.map((src, index) => (
           <SwiperSlide key={index}>
@@ -56,7 +55,6 @@ const Carrousel = () => {
         ))}
       </Swiper>
 
-      {/* Botón para ir atrás */}
       <IconButton
         ref={prevRef}
         aria-label="Previous Slide"
@@ -71,7 +69,6 @@ const Carrousel = () => {
         _hover={{ bg: "black" }}
       />
 
-      {/* Botón para ir adelante */}
       <IconButton
         ref={nextRef}
         aria-label="Next Slide"
