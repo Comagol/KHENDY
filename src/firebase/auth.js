@@ -1,16 +1,7 @@
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
-import { app } from "./config";
+import { getAuth } from "firebase/auth";
+import { app } from "./config"; // Asegúrate de importar `app` correctamente
 
+// Inicializar autenticación
 const auth = getAuth(app);
 
-export const registerUser = (email, password) => {
-  return createUserWithEmailAndPassword(auth, email, password);
-};
-
-export const loginUser = (email, password) => {
-  return signInWithEmailAndPassword(auth, email, password);
-};
-
-export const logoutUser = () => {
-  return signOut(auth);
-};
+export { auth };

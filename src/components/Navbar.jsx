@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import CartIcon from "./CartIcon";
 import MenuItems from "./MenuItems";
-import { logoutUser } from "../firebase/auth";
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -31,7 +30,7 @@ const Navbar = () => {
         </Box>
 
         <Spacer />
-        <Button onClick={logoutUser} colorScheme="red">Cerrar Sesión</Button>
+        <Button colorScheme="red">Cerrar Sesión</Button>
         <CartIcon />
       </Flex>
 
