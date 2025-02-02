@@ -1,34 +1,22 @@
-import { useEffect, useState } from "react";
-import {fetchProducts}  from "../firebase/firestore"; // Ajusta la ruta si es necesario
+import { Box, Grid, Text } from "@chakra-ui/react";
+import ProductCard from "./ProductCard";
+import { useProducts } from "../context/ProductsContext"; // Importamos el hook
 
 const ProductList = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    const getProducts = async () => {
-      const data = await fetchProducts();
-      console.log("Productos obtenidos:", data); // Verifica en la consola si llegan los datos
-      setProducts(data);
-    };
-
-    getProducts();
-  }, []);
+  const { products, loading } = useProducts(); // Obtenemos los datos del contexto
 
   return (
-    <div>
-      <h2>Lista de Productos</h2>
-      <ul>
-        {products.length > 0 ? (
-          products.map((product) => (
-            <li key={product.id}>
-              {product.nombre} - ${product.precio}
-            </li>
-          ))
-        ) : (
-          <p>No hay productos disponibles</p>
-        )}
-      </ul>
-    </div>
+    <Box p={4}>
+      {loading ? (
+        <Text>Cargando productos...</Text>
+      ) : (
+        <Grid templateColumns="repeat(auto-fit, minmax(200px, 1fr))" gap={4}>
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </Grid>
+      )}
+    </Box>
   );
 };
 

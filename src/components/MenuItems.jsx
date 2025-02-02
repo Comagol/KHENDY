@@ -14,7 +14,7 @@ const MenuItems = ({ isMobile = false }) => {
           <MenuItem as={Link} to="/products" bg={"gray.900"}>Pulsera</MenuItem>
           <MenuItem as={Link} to="/products" bg={"gray.900"}>Aros</MenuItem> 
           <MenuItem as={Link} to="/products" bg={"gray.900"}>Gargantillas</MenuItem>
-          <MenuItem as={Link} to="/products" bg={"gray.900"}>Ver Todos</MenuItem>
+          <MenuItem as={Link} to="/productlist" bg={"gray.900"}>Ver Todos</MenuItem>
         </MenuList>
       </Menu>
 
