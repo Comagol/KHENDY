@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchProducts } from "../firebase/firestore"; // Ajusta la ruta si es necesario
+import {fetchProducts}  from "../firebase/firestore"; // Ajusta la ruta si es necesario
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);

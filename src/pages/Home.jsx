@@ -1,11 +1,19 @@
-import React from 'react'
-import Carrousel from '../components/Carrousel'
+import React, { useEffect } from "react";
+import Carrousel from "../components/Carrousel";
+import { fetchProducts } from "../firebase/firestore";
 
 const Home = () => {
-  return (
-    <Carrousel/>
-    
-  )
-}
+  useEffect(() => {
+    const getProducts = async () => {
+      const products = await fetchProducts();
+      console.log("Productos en Firestore:", products);
+    };
 
-export default Home
+    getProducts();
+  }, []);
+
+
+  return <Carrousel />;
+};
+
+export default Home;
