@@ -12,8 +12,8 @@ const ProductCard = ({ product }) => {
 
   return (
     <Box border="1px solid #ddd" p={4} borderRadius="md" boxShadow="md">
-      {product.imageUrl ? (
-        <Image src={product.imageUrl} alt={product.name} borderRadius="md" mb={2} />
+      {product.img ? (
+        <Image height="200px" src={product.img} alt={product.name} borderRadius="md" mb={2} />
       ) : (
         <Skeleton height="150px" width="100%" borderRadius="md" mb={2} />
       )}
@@ -21,6 +21,7 @@ const ProductCard = ({ product }) => {
       <Text color="gray.500">
         {new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS" }).format(product.price)}
       </Text>
+      <Text color="gray.600">{product.description}</Text>
       <Counter quantity={quantity} setQuantity={setQuantity} />
       <Button mt={2} colorScheme="blue">Agregar al carrito</Button>
     </Box>
