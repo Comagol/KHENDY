@@ -27,6 +27,4 @@ export const ProductsProvider = ({ children }) => {
 };
 
 // Hook personalizado para usar el contexto
-export const useProducts = () => {
-  return useContext(ProductsContext);
-};
+export const useProducts = () => useContext(ProductsContext);
