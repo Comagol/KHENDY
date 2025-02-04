@@ -1,5 +1,5 @@
 import { Box, Flex, IconButton, useDisclosure, Spacer, Button } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import CartIcon from "./CartIcon";
 import MenuItems from "./MenuItems";
@@ -31,7 +31,7 @@ const Navbar = () => {
 
         <Spacer />
         <Button colorScheme="red">Cerrar Sesión</Button>
-        <CartIcon />
+        <CartIcon as={Link} onClick={() => navigate("/cart")} />
       </Flex>
 
       {/* MOBILE MENU */}

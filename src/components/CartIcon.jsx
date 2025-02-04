@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { IconButton, Badge, Box } from "@chakra-ui/react";
 import { FaShoppingCart } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const CartIcon = () => {
     const [cartCount, setCartCount] = useState(3);
+    const navigate = useNavigate()
 
     return (
         <Box position="relative">
             <IconButton
             icon={<FaShoppingCart/>}
+            onClick={() => navigate("/cart")}
             aria-label="Carrito de Compras"
             variant="ghost"
             colorScheme="teal"

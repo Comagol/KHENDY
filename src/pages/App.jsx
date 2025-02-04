@@ -6,6 +6,8 @@ import NotFound from "../pages/NotFound";
 import AboutUs from "../pages/AboutUs";
 import ProductList from "../components/ProductList"
 import Home from "./Home";
+import Footer from "../components/Footer";
+import Cart from "./Cart";
 
 function App() {
   return (
@@ -19,8 +21,10 @@ function App() {
             <Route path="/products" element={<Products/>}/>
             <Route path="/productlist" element={<ProductList/>}/>
             <Route path="/products/:category" element={<ProductList/>}/>
+            <Route path="/cart" element={<Cart/>}/>
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <Footer/>
         </Router>
   );
 }
