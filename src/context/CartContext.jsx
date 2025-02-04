@@ -10,7 +10,7 @@ export const CartProvider = ({ children }) => {
       const existingProduct = prevCart.find((item) => item.id === product.id);
       if (existingProduct) {
         return prevCart.map((item) =>
-          item.id === product.id ? { ...item, quantity } : item
+          item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
         );
       } else {
         return [...prevCart, { ...product, quantity }];
@@ -26,8 +26,10 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+
   return (
-    <CartContext.Provider value={{ cart, addToCart, updateQuantity }}>
+    <CartContext.Provider value={{ cart, addToCart, updateQuantity, totalItems }}>
       {children}
     </CartContext.Provider>
   );

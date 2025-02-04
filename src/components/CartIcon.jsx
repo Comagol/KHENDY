@@ -1,11 +1,13 @@
-import { useState } from "react";
 import { IconButton, Badge, Box } from "@chakra-ui/react";
 import { FaShoppingCart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useCart} from "../context/CartContext";
 
 const CartIcon = () => {
-    const [cartCount, setCartCount] = useState(3);
-    const navigate = useNavigate()
+    const { totalItems } = useCart();
+    const navigate = useNavigate();
+
+    console.log(totalItems)
 
     return (
         <Box position="relative">
@@ -17,9 +19,9 @@ const CartIcon = () => {
             colorScheme="teal"
             size="lg"
             />
-            {cartCount > 0 && (
+            {totalItems > 0 && (
                 <Badge position="absolute" top="-1" right="-1" bg="green.500" color="white" borderRadius="full" px={2} fontSize="0.8em">
-                    {cartCount}
+                    {totalItems}
                 </Badge>
             )}
         </Box>

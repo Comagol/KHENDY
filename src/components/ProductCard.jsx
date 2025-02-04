@@ -1,9 +1,11 @@
 import { Box, Text, Button, Image, Skeleton } from "@chakra-ui/react";
 import Counter from "./Counter";
+import { useCart } from "../context/CartContext"
 import { useState } from "react";
 
 const ProductCard = ({ product }) => {
-  const [quantity, setQuantity] = useState(0);
+  const { addToCart } = useCart();
+  const [quantity, setQuantity] = useState(1);
 
   // Si el producto no está disponible, muestra un loader
   if (!product) {
@@ -22,8 +24,8 @@ const ProductCard = ({ product }) => {
         {new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS" }).format(product.price)}
       </Text>
       <Text color="gray.600">{product.description}</Text>
-      <Counter quantity={quantity} setQuantity={setQuantity} />
-      <Button mt={2} colorScheme="blue">Agregar al carrito</Button>
+      <Counter initialCount={quantity} onChange={setQuantity} />
+      <Button mt={2} colorScheme="blue" onClick={() => addToCart(product,quantity)}>Agregar al carrito</Button>
     </Box>
   );
 };
