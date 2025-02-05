@@ -7,8 +7,6 @@ const CartIcon = () => {
     const { totalItems } = useCart();
     const navigate = useNavigate();
 
-    console.log(totalItems)
-
     return (
         <Box position="relative">
             <IconButton
