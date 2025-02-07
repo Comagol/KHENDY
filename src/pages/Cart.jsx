@@ -1,9 +1,10 @@
 import React from 'react'
 import { useCart } from '../context/CartContext'
-import { Box, HStack, Image, Img, Text, VStack } from '@chakra-ui/react';
+import { Box, HStack, Image, IconButton, Text, VStack } from '@chakra-ui/react';
+import { DeleteIcon } from '@chakra-ui/icons';
 
 const Cart = () => {
-    const { cart } = useCart();
+    const { cart, removeFromCart } = useCart();
 
   return (
     <Box p="4">
@@ -21,6 +22,7 @@ const Cart = () => {
                 <Text>Precio: ${item.price}</Text>
                 <Text>Cantidad: {item.quantity}</Text>
               </Box>
+              <IconButton onClick={() => removeFromCart(item.id)}  icon={<DeleteIcon/> }/>
             </HStack>
           ))}
         </VStack>
