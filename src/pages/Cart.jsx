@@ -2,9 +2,10 @@ import React from 'react'
 import { useCart } from '../context/CartContext'
 import { Box, HStack, Image, IconButton, Text, VStack } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
+import Counter from '../components/Counter'
 
 const Cart = () => {
-    const { cart, removeFromCart } = useCart();
+  const { cart, removeFromCart, updateQuantity } = useCart();
 
   return (
     <Box p="4">
@@ -16,18 +17,19 @@ const Cart = () => {
         <VStack spacing="4" align="stretch">
           {cart.map((item) => (
             <HStack key={item.id} borderWidth="1px" borderRadius="md" p="4">
-              <Image src={item.img} alt={item.name} boxSize="50px"/>
+              <Image src={item.img} alt={item.name} boxSize="100px"/>
               <Box flex="1">
                 <Text>Producto: {item.name}</Text>
                 <Text>Precio: ${item.price}</Text>
-                <Text>Cantidad: {item.quantity}</Text>
+                <Counter initialCount={item.quantity} onChange={(newQuantity) => updateQuantity(item.id, newQuantity)} 
+                />
+                <Text>Subtotal: {item.quantity * item.price}</Text>
               </Box>
               <IconButton onClick={() => removeFromCart(item.id)}  icon={<DeleteIcon/> }/>
             </HStack>
           ))}
         </VStack>
-      )
-    }
+      )}
     </Box>
   );
 };
