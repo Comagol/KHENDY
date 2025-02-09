@@ -6,7 +6,6 @@ const Home = () => {
   useEffect(() => {
     const getProducts = async () => {
       const products = await fetchProducts();
-      console.log("Productos en Firestore:", products);
     };
 
     getProducts();
