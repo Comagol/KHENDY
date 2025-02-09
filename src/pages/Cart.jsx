@@ -3,12 +3,13 @@ import { useCart } from '../context/CartContext'
 import { Box, HStack, Image, IconButton, Text, VStack, Divider, Button } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import Counter from '../components/Counter'
-import { useNavigate } from 'react-router-dom';
+import { saveOrder } from '../firebase/firestore';
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity } = useCart();
   const total = cart.reduce((acc, item) => acc + item.quantity * item.price, 0);
-  const navigate = useNavigate();
+  console.log("Contenido del carrito:", cart);
+  console.log("Total de la compra:", total);
 
   return (
     <Box p="4">
@@ -34,7 +35,7 @@ const Cart = () => {
           <Divider my="2" display="flex"/>
           <Box display="flex" justifyContent="space-evenly">
             <Text fontSize="xl" fontWeight="bold" >Total: ${total}</Text>
-            <Button onClick={() => navigate(`/paymentform`)}>Finalizar compra</Button>
+            <Button onClick={() => saveOrder(cart,total)}>Finalizar compra</Button>
           </Box>
         </VStack>
       )}

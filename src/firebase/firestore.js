@@ -1,4 +1,4 @@
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, addDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 import { app } from "./config";
 
 const db = getFirestore(app);
@@ -13,5 +13,46 @@ export const fetchProducts = async () => {
   } catch (error) {
     console.error("Error obteniendo productos:", error);
     return [];
+  }
+};
+
+export const saveOrder = async (cart, total) => {
+  try {
+    if (!cart || cart.length === 0) {
+      console.error("Error: el carrito está vacío.");
+      return;
+    }
+
+    // Guardar la orden en Firestore
+    const orderRef = await addDoc(collection(db, "sales"), {
+      items: cart.map(item => ({
+        id: item.id,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity
+      })),
+      total,
+      createdAt: new Date()
+    });
+
+    console.log("Orden guardada con ID:", orderRef.id);
+
+    // Actualizar stock
+    for (const item of cart) {
+      const productRef = doc(db, "products", item.id);
+      const productSnap = await getDoc(productRef);
+
+      if (productSnap.exists()) {
+        const newStock = productSnap.data().stock - item.quantity;
+        await updateDoc(productRef, { stock: newStock });
+        console.log(`Stock actualizado para ${item.name}: ${newStock} unidades restantes`);
+      } else {
+        console.error(`Producto con ID ${item.id} no encontrado en Firestore`);
+      }
+    }
+
+    alert("Compra realizada con éxito!");
+  } catch (error) {
+    console.error("Error al guardar la orden:", error);
   }
 };
