@@ -1,12 +1,14 @@
 import React from 'react'
 import { useCart } from '../context/CartContext'
-import { Box, HStack, Image, IconButton, Text, VStack, Divider } from '@chakra-ui/react';
+import { Box, HStack, Image, IconButton, Text, VStack, Divider, Button } from '@chakra-ui/react';
 import { DeleteIcon } from '@chakra-ui/icons';
 import Counter from '../components/Counter'
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity } = useCart();
   const total = cart.reduce((acc, item) => acc + item.quantity * item.price, 0);
+  const navigate = useNavigate();
 
   return (
     <Box p="4">
@@ -30,7 +32,10 @@ const Cart = () => {
             </HStack>
           ))}
           <Divider my="2" display="flex"/>
-          <Text fontSize="xl" fontWeight="bold" >Total: ${total}</Text>
+          <Box display="flex" justifyContent="space-evenly">
+            <Text fontSize="xl" fontWeight="bold" >Total: ${total}</Text>
+            <Button onClick={() => navigate(`/paymentform`)}>Finalizar compra</Button>
+          </Box>
         </VStack>
       )}
     </Box>

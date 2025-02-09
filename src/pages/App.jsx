@@ -9,6 +9,7 @@ import ProductList from "../components/ProductList";
 import Home from "./Home";
 import Footer from "../components/Footer";
 import Cart from "./Cart";
+import PaymentForm from "./PaymentForm";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/productlist" element={<ProductList />} />
             <Route path="/products/:category" element={<ProductList />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/paymentform" element={<PaymentForm/>}/>
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Box>
