@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Box, IconButton } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -17,27 +17,26 @@ const images = [
 const Carrousel = () => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  const [swiperInstance, setSwiperInstance] = useState(null);
+
+  useEffect(() => {
+    if (swiperInstance && swiperInstance.navigation) {
+      swiperInstance.params.navigation.prevEl = prevRef.current;
+      swiperInstance.params.navigation.nextEl = nextRef.current;
+      swiperInstance.navigation.init();
+      swiperInstance.navigation.update();
+    }
+  }, [swiperInstance]);
 
   return (
-    <Box py="10">
+    <Box py="10" position="relative" width="50vw" height="40vh" mx="auto">
       <Swiper
         modules={[Navigation, Pagination]}
-        navigation={{
-          prevEl: prevRef.current,
-          nextEl: nextRef.current
-        }}
-        onSwiper={(swiper) => {
-          setTimeout(() => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-            swiper.navigation.init();
-            swiper.navigation.update();
-          });
-        }}
+        onSwiper={setSwiperInstance} // Guarda la instancia del Swiper
         pagination={{ clickable: true }}
         loop={true}
         slidesPerView={1}
-        style={{ width: "50vw", height: "40vh" }}
+        style={{ width: "100%", height: "100%" }}
       >
         {images.map((src, index) => (
           <SwiperSlide key={index}>
@@ -46,7 +45,7 @@ const Carrousel = () => {
               src={src}
               alt={`Slide ${index + 1}`}
               width="100%"
-              maxHeight="100%"
+              height="100%"
               objectFit="cover"
               display="block"
               mx="auto"
@@ -55,12 +54,13 @@ const Carrousel = () => {
         ))}
       </Swiper>
 
+      {/* Botones de navegación */}
       <IconButton
         ref={prevRef}
         aria-label="Previous Slide"
         icon={<ChevronLeftIcon boxSize={8} />}
         position="absolute"
-        left="20px"
+        left="10px"
         top="50%"
         transform="translateY(-50%)"
         zIndex="10"
@@ -74,7 +74,7 @@ const Carrousel = () => {
         aria-label="Next Slide"
         icon={<ChevronRightIcon boxSize={8} />}
         position="absolute"
-        right="20px"
+        right="10px"
         top="50%"
         transform="translateY(-50%)"
         zIndex="10"
