@@ -8,8 +8,6 @@ import { saveOrder } from '../firebase/firestore';
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity } = useCart();
   const total = cart.reduce((acc, item) => acc + item.quantity * item.price, 0);
-  console.log("Contenido del carrito:", cart);
-  console.log("Total de la compra:", total);
 
   return (
     <Box p="4">

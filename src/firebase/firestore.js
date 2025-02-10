@@ -45,14 +45,11 @@ export const saveOrder = async (cart, total) => {
       if (productSnap.exists()) {
         const newStock = productSnap.data().stock - item.quantity;
         await updateDoc(productRef, { stock: newStock });
-        console.log(`Stock actualizado para ${item.name}: ${newStock} unidades restantes`);
       } else {
-        console.error(`Producto con ID ${item.id} no encontrado en Firestore`);
       }
     }
 
     alert("Compra realizada con éxito!");
   } catch (error) {
-    console.error("Error al guardar la orden:", error);
   }
 };
