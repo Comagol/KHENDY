@@ -3,6 +3,17 @@ import { app } from "./config";
 
 const db = getFirestore(app);
 
+export const saveContactMessage = async (formData) => {
+  try {
+    const docRef = await addDoc(collection(db, "contactMessages"), formData);
+    console.log("Mensaje guardado con ID: ", docRef.id);
+    return docRef.id; // Retornar el ID del documento almacenado
+  } catch (error) {
+    console.error("Error al guardar el mensaje: ", error);
+    throw error; // Lanzar el error para manejarlo en el componente
+  }
+};
+
 export const fetchProducts = async () => {
   try {
     const querySnapshot = await getDocs(collection(db, "products"));
