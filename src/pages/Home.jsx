@@ -19,9 +19,9 @@ const Home = () => {
           Categorías
         </Text>
 
-        <SimpleGrid columns={[1, 2, 3]} spacing={6}>
+        <SimpleGrid columns={[1, 2, 3, 4, 5]} spacing={6}>
           {categoryPreviews.map((category) => (
-            <CategoryCard key={category.category} category={category} />
+            <CategoryCard key={category.category} category={category}/>
           ))}
         </SimpleGrid>
       </Box>

@@ -32,7 +32,7 @@ const ProductList = () => {
       {loading ? (
         <Text>Cargando productos...</Text>
       ) : (
-        <Grid templateColumns="repeat(auto-fit, minmax(200px, 1fr))" gap={4}>
+        <Grid templateColumns="repeat(auto-fit, minmax(200px, 1fr))" gap={4}> 
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => <ProductCard key={product.id} product={product} />)
           ) : (

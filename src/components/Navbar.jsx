@@ -30,7 +30,7 @@ const Navbar = () => {
         </Box>
 
         <Spacer />
-        <Button colorScheme="red">Cerrar Sesión</Button>
+        <Button colorScheme="red">Iniciar Sesión</Button>
         <CartIcon as={Link} onClick={() => navigate("/cart")} />
       </Flex>
 

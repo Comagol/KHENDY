@@ -6,7 +6,7 @@ const CategoryCard = ({ category }) => {
 
     return (
         <Box borderWidth="1px" borderRadius="md" overflow="hidden" p={4} textAlign="center">
-            <VStack spacing={3}>
+            <VStack spacing={4}>
                 <Text fontSize="xl" fontWeight="bold">{category.category}</Text>
                 <Image 
                     src={category.img ?? "https://via.placeholder.com/150"} 

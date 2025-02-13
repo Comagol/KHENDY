@@ -47,11 +47,11 @@ const Contact = () => {
 
       // Limpiar formulario
       setFormData({
-        nombre: "",
-        apellido: "",
+        name: "",
+        lastname: "",
         email: "",
-        telefono: "",
-        mensaje: "",
+        phone: "",
+        messege: "",
       });
 
     } catch (error) {
@@ -71,12 +71,12 @@ const Contact = () => {
       <form onSubmit={handleSubmit}>
         <FormControl isRequired>
           <FormLabel>Nombre</FormLabel>
-          <Input name="nombre" value={formData.nombre} onChange={handleChange} />
+          <Input name="nombre" value={formData.name} onChange={handleChange} />
         </FormControl>
 
         <FormControl isRequired>
           <FormLabel>Apellido</FormLabel>
-          <Input name="apellido" value={formData.apellido} onChange={handleChange} />
+          <Input name="apellido" value={formData.lastname} onChange={handleChange} />
         </FormControl>
 
         <FormControl isRequired>
@@ -86,12 +86,12 @@ const Contact = () => {
 
         <FormControl>
           <FormLabel>Teléfono</FormLabel>
-          <Input type="tel" name="telefono" value={formData.telefono} onChange={handleChange} />
+          <Input type="tel" name="telefono" value={formData.phone} onChange={handleChange} />
         </FormControl>
 
         <FormControl isRequired>
           <FormLabel>Mensaje</FormLabel>
-          <Textarea name="mensaje" value={formData.mensaje} onChange={handleChange} />
+          <Textarea name="mensaje" value={formData.messege} onChange={handleChange} />
         </FormControl>
 
         <Button mt={4} colorScheme="blue" type="submit">

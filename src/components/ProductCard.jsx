@@ -13,11 +13,11 @@ const ProductCard = ({ product }) => {
   }
 
   return (
-    <Box border="1px solid #ddd" p={4} borderRadius="md" boxShadow="md">
+    <Box border="1px solid #ddd" p={4} borderRadius="md" boxShadow="md" mx="6px">
       {product.img ? (
         <Image height="200px" src={product.img} alt={product.name} borderRadius="md" mb={2} />
       ) : (
-        <Skeleton height="150px" width="100%" borderRadius="md" mb={2} />
+        <Skeleton height="150px" borderRadius="md" mb={2} />
       )}
       <Text fontSize="lg" fontWeight="bold">{product.name}</Text>
       <Text color="gray.500">
