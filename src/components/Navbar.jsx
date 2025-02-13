@@ -6,6 +6,7 @@ import MenuItems from "./MenuItems";
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
 
   return (
     <Box bg="gray.900" px={4} color="white">
@@ -30,7 +31,7 @@ const Navbar = () => {
         </Box>
 
         <Spacer />
-        <Button colorScheme="red">Iniciar Sesión</Button>
+        <Button colorScheme="red" onClick={() => navigate("/login")}>Iniciar Sesión</Button>
         <CartIcon as={Link} onClick={() => navigate("/cart")} />
       </Flex>
 
