@@ -9,7 +9,7 @@ import ProductList from "../components/ProductList";
 import Home from "./Home";
 import Footer from "../components/Footer";
 import Cart from "./Cart";
-import Login from "../pages/Login";
+import Login from "../pages/login"
 
 function App() {
   return (

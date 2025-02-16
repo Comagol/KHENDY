@@ -4,16 +4,18 @@ import * as ReactDOM from 'react-dom/client'
 import App from './/pages/App'
 import { ProductsProvider } from './context/ProductsContext'
 import { CartProvider } from './context/CartContext'
+import { AuthProvider } from "./context/AuthContext"; // ✅ Importación corregida
 
-const rootElement = document.getElementById('root')
-ReactDOM.createRoot(rootElement).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider>
-      <ProductsProvider>
-        <CartProvider>
-          <App />
-        </CartProvider>
-      </ProductsProvider>
+      <AuthProvider> 
+        <ProductsProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </ProductsProvider>
+      </AuthProvider>
     </ChakraProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
