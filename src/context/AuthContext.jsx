@@ -4,8 +4,8 @@ import { app } from "../firebase/config";
 
 const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {  // 🔹 Corregido "childen" -> "children"
-    const [user, setUser] = useState(null);  // 🔹 Corregido "uset" -> "user"
+export const AuthProvider = ({ children }) => {  
+    const [user, setUser] = useState(null); 
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
