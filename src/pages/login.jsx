@@ -57,7 +57,7 @@ const Login = () => {
   };
 
   return (
-    <VStack spacing={4} p={6} boxShadow="md" borderRadius="lg" w="sm" bg="white">
+    <VStack spacing={4} p={6} boxShadow="md" borderRadius="lg" w="sm" bg="white" justifySelf="center" marginTop="20px">
       <Text fontSize="2xl" fontWeight="bold">
         {isRegistering ? "Regístrate" : "Iniciar Sesión"}
       </Text>
