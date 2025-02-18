@@ -50,6 +50,7 @@ const Cart = () => {
           <Box display="flex" justifyContent="space-evenly">
             <Text fontSize="xl" fontWeight="bold">Total: ${total}</Text>
             <Button onClick={handleCheckout} colorScheme="green">Finalizar compra</Button>
+            <Button onClick={clearCart} colorScheme="red">Vaciar carrito</Button>
           </Box>
         </VStack>
       )}
