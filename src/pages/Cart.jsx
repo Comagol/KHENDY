@@ -8,7 +8,7 @@ import Counter from '../components/Counter';
 import { saveOrder } from '../firebase/firestore';
 
 const Cart = () => {
-  const { cart, removeFromCart, updateQuantity } = useCart();
+  const { cart, removeFromCart, updateQuantity, clearCart } = useCart();
   const { user } = useAuth(); // Obtenemos el usuario autenticado
   const navigate = useNavigate();
   const total = cart.reduce((acc, item) => acc + item.quantity * item.price, 0);
@@ -17,8 +17,9 @@ const Cart = () => {
     if (!user) {
       navigate("/login"); // Si no está autenticado, lo enviamos a la página de login
     } else {
-      saveOrder(cart, total); // Si está autenticado, guardamos la orden
+      saveOrder(cart, total); // Si está autenticado, guardamos la orden y navegamos al inicio
       navigate("/");
+      clearCart();
     }
   };
 
